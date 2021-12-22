@@ -3,10 +3,12 @@
 
 Tic-tac-toe is a fun game that you can play any time and anywhere as long as you have a piece of paper, a pencil, and an opponent. Tic-tac-toe is a zero sum game, which means that if both players are playing their best, then neither player will win.
 
-** The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner. 💯**
+**The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row is the winner. 💯**
 
 **_Design Credits_** : **EYUVA**
 **Link** : https://dribbble.com/shots/3402966-Tic-Tac-Toe
+
+![alt text](https://raw.githubusercontent.com/adeyinkaezra123/TicTacFinger-/main/TicTacToe/src/images/a859ab9b83820b35cf9d6de4dd1f4c38.webp)
 
 
 
