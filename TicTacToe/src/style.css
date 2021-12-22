@@ -1,0 +1,481 @@
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100vh;
+  max-width: 100%;
+  /* gap: 5vw; */
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #4c6a86;
+}
+
+.game {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 95vw;
+  max-width: 400px;
+  padding: 0 20px 10px;
+  height: 550px;
+  border: 1px solid #79cadc;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-shadow: 1px 6px 30px 0 rgba(121, 202, 220, 0.4);
+          box-shadow: 1px 6px 30px 0 rgba(121, 202, 220, 0.4);
+  position: relative;
+}
+
+.game .score-board {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.game .score-board div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #9a9a9a;
+  font-size: 0.875rem;
+}
+
+.game .score-board div img {
+  margin-bottom: -8px;
+  -webkit-transform: scale(0.35);
+          transform: scale(0.35);
+}
+
+.game .board {
+  height: 60%;
+  position: relative;
+}
+
+.game .board .board-wrap {
+  height: 100%;
+  -ms-grid-rows: (1fr)[3];
+      grid-template-rows: repeat(3, 1fr);
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  display: -ms-grid;
+  display: grid;
+  margin: 20px 10px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  gap: 0;
+}
+
+.game .board .board-wrap .board-tile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  cursor: pointer;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+.game .board .board-wrap .board-tile img {
+  -webkit-transform: scale(55%);
+          transform: scale(55%);
+}
+
+.game .board .board-wrap .board-tile:not(:nth-child(3n)) {
+  border-right: 1px solid #d6e6ea;
+}
+
+.game .board .board-wrap .board-tile:not(:nth-last-child(-n + 3)) {
+  border-bottom: 1px solid #d6e6ea;
+}
+
+.game .move-status {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+  width: 65px;
+  margin: 1.15rem auto;
+  padding: 2px;
+  border: 1px solid rgba(214, 230, 234, 0.6);
+  border-radius: 24px;
+}
+
+.game .move-status span {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 50%;
+  padding: 8px;
+  margin-right: 3px;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.game .move-status span img {
+  width: 15px;
+  height: 15px;
+}
+
+.game .button-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.game .button-wrap .button {
+  width: 46px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(164, 181, 184, 0.4);
+  position: relative;
+  -webkit-transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
+  cursor: pointer;
+}
+
+.game .button-wrap .button .reset {
+  content: "";
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(164, 181, 184, 0.4);
+  background: #a4b5b8 no-repeat center;
+  outline: none;
+  background-size: 20px;
+  background-image: url("./images/restart.svg");
+}
+
+.game .button-wrap .button .reset:hover {
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+  -webkit-animation: none;
+          animation: none;
+  background-color: #277db4 !important;
+}
+
+.game .button-wrap .button .settings {
+  content: "";
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(164, 181, 184, 0.4);
+  background: #a4b5b8 no-repeat center;
+  outline: none;
+  background-size: 20px;
+  background-image: url("./images/config.svg");
+}
+
+.game .button-wrap .button .settings:hover {
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+  -webkit-animation: none;
+          animation: none;
+  background-color: #277db4 !important;
+}
+
+.game .button-wrap .button:hover {
+  border-color: rgba(39, 125, 180, 0.4);
+}
+
+.game .button-wrap .game-mode {
+  color: #a4b5b8;
+  font-size: 12px;
+  border: 1px solid rgba(164, 181, 184, 0.4);
+  padding: 6px 8px;
+  border-radius: 30px;
+}
+
+.myturn-x {
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
+  border-radius: 50%;
+  background: #277db4;
+}
+
+.myturn-x img {
+  -webkit-filter: brightness(0) invert(1);
+          filter: brightness(0) invert(1);
+}
+
+.myturn-o {
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
+  background: #51bad1;
+}
+
+.myturn-o img {
+  -webkit-filter: brightness(0) invert(1);
+          filter: brightness(0) invert(1);
+}
+
+.pulse {
+  background-color: #277db4 !important;
+  -webkit-animation: pulse 1.5s infinite;
+          animation: pulse 1.5s infinite;
+  -webkit-box-shadow: 0 0 0 0 rgba(90, 153, 212, 0.5);
+          box-shadow: 0 0 0 0 rgba(90, 153, 212, 0.5);
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  70% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-box-shadow: 0 0 0 50px rgba(90, 153, 212, 0);
+            box-shadow: 0 0 0 50px rgba(90, 153, 212, 0);
+  }
+  100% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+    -webkit-box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
+            box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  70% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-box-shadow: 0 0 0 50px rgba(90, 153, 212, 0);
+            box-shadow: 0 0 0 50px rgba(90, 153, 212, 0);
+  }
+  100% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+    -webkit-box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
+            box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
+  }
+}
+
+@-webkit-keyframes line {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 90%;
+  }
+}
+
+@keyframes line {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 90%;
+  }
+}
+
+@-webkit-keyframes zoom {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes zoom {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+.zoom-in {
+  -webkit-animation: zoom 1.3s linear 1;
+          animation: zoom 1.3s linear 1;
+}
+
+.winning-line-wrap {
+  position: absolute;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 5px;
+  z-index: 9;
+  width: 100%;
+  display: none;
+}
+
+.winning-line-wrap[class*="winning-line-wrap-"] .winning-line {
+  -webkit-animation: line 0.6s ease-in-out 0.3s 1;
+          animation: line 0.6s ease-in-out 0.3s 1;
+}
+
+.winning-line-wrap .winning-line {
+  height: 5px;
+  margin-top: -3px;
+  background: #fd6593;
+  background-color: #fc5296;
+  background-image: linear-gradient(315deg, #fc5296 0%, #f67062 74%);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  -webkit-animation: line 0.6s ease-in-out 0.3s 1;
+          animation: line 0.6s ease-in-out 0.3s 1;
+}
+
+.winning-line-wrap-0-2 {
+  top: 23%;
+}
+
+.winning-line-wrap-3-5 {
+  top: 56%;
+}
+
+.winning-line-wrap-6-8 {
+  top: 90%;
+}
+
+.winning-line-wrap-0-6,
+.winning-line-wrap-1-7,
+.winning-line-wrap-2-8 {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  width: 80%;
+}
+
+@media screen and (max-width: 400px) {
+  .winning-line-wrap-0-6,
+  .winning-line-wrap-1-7,
+  .winning-line-wrap-2-8 {
+    width: 100%;
+  }
+  .winning-line-wrap-0-8 {
+    -webkit-transform: rotate(48.25deg) !important;
+            transform: rotate(48.25deg) !important;
+    width: 115% !important;
+  }
+  .winning-line-wrap-2-6,
+  .winning-line-wrap-6-2 {
+    -webkit-transform: rotate(-47.4deg) !important;
+            transform: rotate(-47.4deg) !important;
+    width: 130% !important;
+    top: 50% !important;
+    right: -19% !important;
+  }
+}
+
+.winning-line-wrap-0-6 {
+  left: 18.5%;
+  top: 10%;
+}
+
+.winning-line-wrap-1-7 {
+  left: 50%;
+  top: 10%;
+}
+
+.winning-line-wrap-2-8 {
+  left: 81%;
+  top: 10%;
+}
+
+.winning-line-wrap-0-8,
+.winning-line-wrap-2-6 {
+  width: 113.15%;
+  padding: 0 10px;
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+}
+
+.winning-line-wrap-0-8 {
+  -webkit-transform: rotate(44.05deg);
+          transform: rotate(44.05deg);
+  left: 2rem;
+  top: 2.4rem;
+}
+
+.winning-line-wrap-2-6,
+.winning-line-wrap-6-2 {
+  top: 56.5%;
+  -webkit-transform: rotate(-44deg);
+          transform: rotate(-44deg);
+}
+
+.gradient-text {
+  /* Fallback: Set a background color. */
+  /* Create the gradient. */
+  background-image: linear-gradient(147deg, #990000 0%, #ff0000 74%);
+  /* Set the background size and repeat properties. */
+  background-size: 100%;
+  background-repeat: repeat;
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+/*# sourceMappingURL=style.css.map */

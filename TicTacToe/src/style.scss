@@ -1,0 +1,320 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  max-width: 100%;
+  /* gap: 5vw; */
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #4c6a86;
+}
+
+.game {
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  width: 95vw;
+  max-width: 400px;
+  padding: 0 20px 10px;
+  height: 550px;
+  border: 1px solid #79cadc;
+  box-sizing: border-box;
+  box-shadow: 1px 6px 30px 0 rgba(121, 202, 220, 0.4);
+  position: relative;
+  .score-board {
+    display: flex;
+    justify-content: space-around;
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #9a9a9a;
+      font-size: 0.875rem;
+      img {
+        margin-bottom: -8px;
+        transform: scale(0.35);
+      }
+    }
+  }
+
+  .board {
+    height: 60%;
+    position: relative;
+
+    .board-wrap {
+      height: 100%;
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+      display: grid;
+      margin: 20px 10px;
+      flex-grow: 1;
+      gap: 0;
+
+      .board-tile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        cursor: pointer;
+        border-collapse: collapse;
+        img {
+          transform: scale(55%);
+        }
+        margin: 0;
+        &:not(:nth-child(3n)) {
+          border-right: 1px solid #d6e6ea;
+        }
+
+        &:not(:nth-last-child(-n + 3)) {
+          border-bottom: 1px solid #d6e6ea;
+        }
+      }
+    }
+  }
+
+  .move-status {
+    display: inline-flex;
+    justify-content: space-between;
+    position: relative;
+    width: 65px;
+    margin: 1.15rem auto;
+    padding: 2px;
+    border: 1px solid rgba(214, 230, 234, 0.6);
+    border-radius: 24px;
+    span {
+      display: inline-flex;
+      border-radius: 50%;
+      padding: 8px;
+      margin-right: 3px;
+      transition: all 0.4s ease-in-out;
+    }
+    span img {
+      width: 15px;
+      height: 15px;
+    }
+  }
+  .button-wrap {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    .button {
+      width: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid rgba(164, 181, 184, 0.4);
+      position: relative;
+      transition: all 0.4s ease-in;
+      cursor: pointer;
+      @mixin button {
+        content: "";
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 1px solid rgba(164, 181, 184, 0.4);
+        background: #a4b5b8 no-repeat center;
+        outline: none;
+        background-size: 20px;
+        &:hover {
+          transition: all 0.4s ease-out;
+          animation: none;
+          background-color: #277db4 !important;
+        }
+      }
+      .reset {
+        @include button();
+        background-image: url("./images/restart.svg");
+      }
+      .settings {
+        @include button();
+        background-image: url("./images/config.svg");
+      }
+      &:hover {
+        border-color: rgba(39, 125, 180, 0.4);
+      }
+    }
+    .game-mode {
+      color: #a4b5b8;
+      font-size: 12px;
+      border: 1px solid rgba(164, 181, 184, 0.4);
+      padding: 6px 8px;
+      border-radius: 30px;
+      // text-transform: uppercase;
+    }
+  }
+}
+
+.myturn-x {
+  transform: scale(1.15);
+  border-radius: 50%;
+  background: #277db4;
+  img {
+    filter: brightness(0) invert(1);
+  }
+}
+.myturn-o {
+  transform: scale(1.15);
+  background: #51bad1;
+  img {
+    filter: brightness(0) invert(1);
+  }
+}
+
+.pulse {
+  background-color: #277db4 !important;
+  animation: pulse 1.5s infinite;
+  box-shadow: 0 0 0 0 rgba(#5a99d4, 0.5);
+}
+
+// Animation
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 50px rgba(#5a99d4, 0);
+  }
+  100% {
+    transform: scale(0.9);
+    box-shadow: 0 0 0 0 rgba(#5a99d4, 0);
+  }
+}
+
+@keyframes line {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 90%;
+  }
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.zoom-in {
+  animation: zoom 1.3s linear 1;
+}
+
+// WINNING LINE
+.winning-line-wrap {
+  position: absolute;
+  box-sizing: border-box;
+  padding: 0 5px;
+  z-index: 9;
+  width: 100%;
+  display: none;
+
+  &[class*="winning-line-wrap-"] {
+    .winning-line {
+      animation: line 0.6s ease-in-out 0.3s 1;
+    }
+  }
+  .winning-line {
+    height: 5px;
+    margin-top: -3px;
+    background: #fd6593;
+    background-color: #fc5296;
+    background-image: linear-gradient(315deg, #fc5296 0%, #f67062 74%);
+    transition: all 0.2s ease-in-out;
+    animation: line 0.6s ease-in-out 0.3s 1;
+  }
+}
+
+.winning-line-wrap-0-2 {
+  top: 23%;
+}
+.winning-line-wrap-3-5 {
+  top: 56%;
+}
+.winning-line-wrap-6-8 {
+  top: 90%;
+}
+.winning-line-wrap-0-6,
+.winning-line-wrap-1-7,
+.winning-line-wrap-2-8 {
+  transform: rotate(90deg);
+  transform-origin: top left;
+  width: 80%;
+}
+
+@media screen and (max-width: 400px) {
+  .winning-line-wrap-0-6,
+  .winning-line-wrap-1-7,
+  .winning-line-wrap-2-8 {
+    width: 100%;
+  }
+  .winning-line-wrap-0-8 {
+    transform: rotate(48.25deg) !important;
+    width: 115% !important;
+  }
+  .winning-line-wrap-2-6,
+  .winning-line-wrap-6-2 {
+    transform: rotate(-47.4deg) !important;
+    width: 130% !important;
+    top: 50% !important;
+    right: -19% !important;
+  }
+}
+.winning-line-wrap-0-6 {
+  left: 18.5%;
+  top: 10%;
+}
+.winning-line-wrap-1-7 {
+  left: 50%;
+  top: 10%;
+}
+.winning-line-wrap-2-8 {
+  left: 81%;
+  top: 10%;
+}
+.winning-line-wrap-0-8,
+.winning-line-wrap-2-6 {
+  width: 113.15%;
+  padding: 0 10px;
+  transform-origin: top left;
+}
+.winning-line-wrap-0-8 {
+  transform: rotate(44.05deg);
+  left: 2rem;
+  top: 2.4rem;
+}
+.winning-line-wrap-2-6,
+.winning-line-wrap-6-2 {
+  top: 56.5%;
+  transform: rotate(-44deg);
+}
+
+.gradient-text {
+  /* Fallback: Set a background color. */
+
+  /* Create the gradient. */
+  background-image: linear-gradient(147deg, #990000 0%, #ff0000 74%);  // background-image: linear-gradient(45deg, #f3ec78, #af4261);
+
+  /* Set the background size and repeat properties. */
+  background-size: 100%;
+  background-repeat: repeat;
+
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}

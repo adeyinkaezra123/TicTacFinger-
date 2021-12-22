@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div class="game">
+    <div class="score-board">
+      <div class="player-x">
+        <img src="./images/x.png" alt="">
+        <span class="x-counter"></span>
+      </div>
+      <div class="player-o">
+        <img src="./images/o.png" alt="">
+        <span class="o-counter"></span>
+      </div>
+      <div class="draw">
+        <img src="./images/d.png" alt="">
+        <span class="draw-counter"></span>
+      </div>
+    </div>
+    <div class="board">
+      <div class="winning-line-wrap">
+        <div class="winning-line"></div>
+      </div>
+      <div class="board-wrap">
+        <div class="board-tile" data-index="0"></div>
+        <div class="board-tile" data-index="1"></div>
+        <div class="board-tile" data-index="2"></div>
+        <div class="board-tile" data-index="3"></div>
+        <div class="board-tile" data-index="4"></div>
+        <div class="board-tile" data-index="5"></div>
+        <div class="board-tile" data-index="6"></div>
+        <div class="board-tile" data-index="7"></div>
+        <div class="board-tile" data-index="8"></div>
+      </div>
+
+    </div>
+    <div class="move-status">
+      <span class="x-move myturn-x"><img src="./images/x.png" alt=""></span>
+      <span class="o-move"><img src="./images/o.png" alt=""></span>
+    </div>
+
+    <div class="button-wrap">
+      <div class="button"><button class="reset"></button></div>
+      <div class="game-mode">Multi Player</div>
+      <div class="button"><button class="settings"></button></div>
+    </div>
+  </div>
+
+  <script src="index.js" type="module"></script>
+</body>
+
+</html>
